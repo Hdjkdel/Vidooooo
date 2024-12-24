@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Oynatıcı</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: black;
+    }
+    video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <video id="video" autoplay muted>
+    <source src="video.mp4" type="video/mp4">
+    Tarayıcınız video etiketi desteklemiyor.
+  </video>
+
+  <script>
+    const video = document.getElementById('video');
+
+    // Video tam ekran modu
+    function requestFullScreen() {
+      if (video.requestFullscreen) {
+        video.requestFullscreen();
+      } else if (video.mozRequestFullScreen) { // Firefox
+        video.mozRequestFullScreen();
+      } else if (video.webkitRequestFullscreen) { // Chrome ve Safari
+        video.webkitRequestFullscreen();
+      } else if (video.msRequestFullscreen) { // IE/Edge
+        video.msRequestFullscreen();
+      }
+    }
+
+    // Video bitince yönlendirme
+    video.onended = function() {
+      window.location.href = "https://hdjkdel.github.io/Crypto-h-z/"; // Buraya yönlendirmek istediğiniz URL'yi yazın
+    };
+
+    // Sayfa yüklendiğinde videoyu tam ekranda başlat
+    window.onload = function() {
+      requestFullScreen();
+    };
+  </script>
+
+</body>
+</html>
